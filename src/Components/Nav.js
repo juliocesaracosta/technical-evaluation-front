@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 
 
 function Nav() {
+  const [haveRol, setRol] = useState(null);
+  useEffect(() => {
+    const user = localStorage.getItem('user')
+    if (user) {
+      setRol(user.role.id in [2,3] ?
+        true: false)
+    } else {
+      setRol(false)
+    }
+  }, []);
   return (
     <Navbar fluid className='nav-important'>
       <Navbar.Brand href="https://flowbite-react.com">
@@ -33,8 +43,7 @@ function Nav() {
       <Navbar.Collapse>
         <Navbar.Link href=""><Link to="/">Home</Link></Navbar.Link>
         <Navbar.Link href="#"><Link to="/profile">Profile</Link></Navbar.Link>
-        <Navbar.Link href="#"><Link to="/administration">Administration</Link></Navbar.Link>
-        <Navbar.Link href="#">Contact</Navbar.Link>
+        {!haveRol ? <Navbar.Link href="#"><Link to="/administration">Administration</Link></Navbar.Link> : ''}
       </Navbar.Collapse>
     </Navbar>
   );
