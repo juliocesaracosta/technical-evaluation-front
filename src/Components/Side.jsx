@@ -24,7 +24,7 @@ function Side(props) {
   return (
     <div>
       {
-        !user ? '' :
+        !haveRol ? '' :
         <div>
           <Sidebar aria-label="Default sidebar example">
             <Sidebar.Items>

@@ -36,15 +36,15 @@ function Register(props) {
                     <form>
                         <div>
                             <div className="mb-2 block">
-                            <Label htmlFor="email" value="Email" />
-                            </div>
-                            <TextInput id="email" type="email" placeholder="cesar" {...register("email")} required/>
-                        </div>
-                        <div>
-                            <div className="mb-2 block">
                             <Label htmlFor="name" value="Usuario" />
                             </div>
                             <TextInput id="name" type="input" placeholder="name@hotmail.com" {...register("name")} required/>
+                        </div>
+                        <div>
+                            <div className="mb-2 block">
+                            <Label htmlFor="email" value="Email" />
+                            </div>
+                            <TextInput id="email" type="email" placeholder="cesar" {...register("email")} required/>
                         </div>
                         <div>
                             <div className="mb-2 block">
