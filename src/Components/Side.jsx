@@ -10,13 +10,13 @@ function Side(props) {
         <Sidebar.Items>
             <Sidebar.ItemGroup>
             <Sidebar.Item href="" icon={HiChartPie}>
-              <Link to="/administration/themes">Themes</Link>
+              <Link to="/administration/themes">Tematicas</Link>
             </Sidebar.Item>
             <Sidebar.Item href="" icon={HiViewBoards}>
-                Categories
+                Categorías
             </Sidebar.Item>
             <Sidebar.Item href="" icon={HiUser}>
-                Users
+                Usuarios
             </Sidebar.Item>
             </Sidebar.ItemGroup>
         </Sidebar.Items>

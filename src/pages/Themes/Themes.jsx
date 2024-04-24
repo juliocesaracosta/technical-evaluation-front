@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Table } from "flowbite-react";
 import Side from '../../Components/Side';
+import { Button } from "flowbite-react";
+import { HiOutlinePlus, HiOutlinePencilAlt, HiTrash } from "react-icons/hi";
 
 
 function Themes(props) {
@@ -42,14 +44,16 @@ function Themes(props) {
                 <Side></Side>
             </div>
             <div className="overflow-x-auto w-full pt-5">
+                <Button size="xs">
+                    Agregar Tematica
+                    <HiOutlinePlus className="h-6 w-6" />
+                </Button>
                 <Table>
                     <Table.Head>
                         <Table.HeadCell>Identificador</Table.HeadCell>
                         <Table.HeadCell>Descripción</Table.HeadCell>
-                        <Table.HeadCell>Category</Table.HeadCell>
-                        <Table.HeadCell>Price</Table.HeadCell>
                         <Table.HeadCell>
-                        <span className="sr-only">Edit</span>
+                            Acciones
                         </Table.HeadCell>
                     </Table.Head>
                     <Table.Body className="divide-y">
@@ -59,12 +63,15 @@ function Themes(props) {
                             {theme._id}
                             </Table.Cell>
                             <Table.Cell>{theme.description}</Table.Cell>
-                            <Table.Cell>Laptop</Table.Cell>
-                            <Table.Cell>$2999</Table.Cell>
                             <Table.Cell>
-                            <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-                                Edit
-                            </a>
+                                <div className="flex flex-wrap gap-2">
+                                    <Button size="xs">
+                                        <HiOutlinePencilAlt className="h-6 w-6" />
+                                    </Button>
+                                    <Button size="xs">
+                                        <HiTrash className="h-6 w-6" />
+                                    </Button>
+                                </div>
                             </Table.Cell>
                         </Table.Row>
                         ))}
