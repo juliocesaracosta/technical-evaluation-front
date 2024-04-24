@@ -17,7 +17,7 @@ function Nav() {
   }, []);
   useEffect(() => {
     if (user) {
-        setRol([2,3].includes(user.role.id) ?
+        setRol([2,3].includes(user.rol.id) ?
          true: false)
     }
   }, [user]);
@@ -39,11 +39,16 @@ function Nav() {
             <Navbar.Link href="" className="text-red-600"><Link to="">Bienvenido {user.name}</Link></Navbar.Link>
             <Navbar.Link href=""><Link to="" onClick={logOut}>Cerrar Sesion</Link></Navbar.Link>
           </Navbar.Collapse>
-        :
-
-        <Navbar.Collapse>
-          <Navbar.Link href=""><Link to="/login">Ingresar</Link></Navbar.Link>
-        </Navbar.Collapse>}
+        : 
+          <div>
+            <Navbar.Collapse>
+              <Navbar.Link href=""><Link to="/register">Registrarse</Link></Navbar.Link>
+            </Navbar.Collapse>
+            <Navbar.Collapse>
+              <Navbar.Link href=""><Link to="/login">Ingresar</Link></Navbar.Link>
+            </Navbar.Collapse>
+          </div>
+        }
       </div>
     </Navbar>
   );

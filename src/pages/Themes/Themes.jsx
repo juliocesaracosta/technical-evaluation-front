@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Table } from "flowbite-react";
 import { Button } from "flowbite-react";
-import {  HiOutlinePencilAlt, HiOutlineTrash, HiOutlinePlus } from "react-icons/hi";
 import Side from '../../Components/Side';
-import { Button } from "flowbite-react";
-import { HiOutlinePlus, HiOutlinePencilAlt, HiTrash } from "react-icons/hi";
+import { HiOutlinePlus, HiOutlinePencilAlt, HiOutlineTrash } from "react-icons/hi";
 
 
 function Themes() {
@@ -41,7 +39,7 @@ function Themes() {
 
       useEffect(() => {
         if (user) {
-            setRol([3].includes(user.role.id) ?
+            setRol([3].includes(user.rol.id) ?
              true: false)
         }
       }, [user]);
@@ -58,60 +56,46 @@ function Themes() {
         <div className='lg:flex'>
             <div className=''>
             </div>
-            <div className="overflow-x-auto w-full pt-5">
-                <Button size="xs">
-                    Agregar Tematica
-                    <HiOutlinePlus className="h-6 w-6" />
-                </Button>
-                <div className="overflow-x-auto w-full p-2">
-                    <div className="flex flex-wrap gap-2">
-                        <Button>
-                            Agregar tematica
-                            <HiOutlinePlus   className="mr-2 h-5 w-5" />
-                        </Button>
-                    </div>
-                    <Table>
-                        <Table.Head>
-                            <Table.HeadCell>Identificador</Table.HeadCell>
-                            <Table.HeadCell>Descripción</Table.HeadCell>
-                            <Table.HeadCell>
-                                Acciones
-                                Acciones
-                            </Table.HeadCell>
-                        </Table.Head>
-                        <Table.Body className="divide-y">
-                            {data.themes.map((theme, i) => (
-                            <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                                    {theme._id}
-                                </Table.Cell>
-                                <Table.Cell>{theme.description}</Table.Cell>
-                                <Table.Cell>
-                                    <div className="flex flex-wrap gap-2">
-                                        <Button>
-                                            <HiOutlinePencilAlt  className="mr-2 h-5 w-5" />
-                                        </Button>
-                                        {
-                                            adminRol ? 
-                                            <Button>
-                                                <HiOutlineTrash  className="ml-2 h-5 w-5" />
-                                            </Button> : ''
-                                        }
-                                    </div>
-                                    <div className="flex flex-wrap gap-2">
-                                        <Button size="xs">
-                                            <HiOutlinePencilAlt className="h-6 w-6" />
-                                        </Button>
-                                        <Button size="xs">
-                                            <HiTrash className="h-6 w-6" />
-                                        </Button>
-                                    </div>
-                                </Table.Cell>
-                            </Table.Row>
-                            ))}
-                        </Table.Body>
-                    </Table>
+            <div className="overflow-x-auto w-full p-2">
+                <div className="flex flex-wrap gap-2">
+                    <Button>
+                        Agregar tematica
+                        <HiOutlinePlus   className="mr-2 h-5 w-5" />
+                    </Button>
                 </div>
+                <Table>
+                    <Table.Head>
+                        <Table.HeadCell>Identificador</Table.HeadCell>
+                        <Table.HeadCell>Descripción</Table.HeadCell>
+                        <Table.HeadCell>
+                            Acciones
+                            Acciones
+                        </Table.HeadCell>
+                    </Table.Head>
+                    <Table.Body className="divide-y">
+                        {data.themes.map((theme, i) => (
+                        <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                            <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                                {theme._id}
+                            </Table.Cell>
+                            <Table.Cell>{theme.description}</Table.Cell>
+                            <Table.Cell>
+                                <div className="flex flex-wrap gap-2">
+                                    <Button>
+                                        <HiOutlinePencilAlt  className="mr-2 h-5 w-5" />
+                                    </Button>
+                                    {
+                                        adminRol ? 
+                                        <Button>
+                                            <HiOutlineTrash  className="ml-2 h-5 w-5" />
+                                        </Button> : ''
+                                    }
+                                </div>
+                            </Table.Cell>
+                        </Table.Row>
+                        ))}
+                    </Table.Body>
+                </Table>
             </div>
         </div>
     );

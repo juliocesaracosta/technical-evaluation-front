@@ -9,7 +9,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    flowbite.content()
+    flowbite.content(),
   ],
 }
 

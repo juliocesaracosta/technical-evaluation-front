@@ -5,3 +5,27 @@
 .nav-important {
   background-color: deepskyblue !important;
 }
+
+.c-select {
+  border: rgb(209 213 219) solid .5px;
+  border-radius: 5px;
+  height: 40px;
+}
+
+.m-l-15{
+  margin-left: 13%;
+}
+
+.register {
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    -webkit-box-shadow: inset 0px 3px 13px -1px rgba(0, 0, 0, 0.29);
+    -moz-box-shadow: inset 0px 3px 13px -1px rgba(0, 0, 0, 0.29);
+    box-shadow: inset 0px 3px 13px -1px rgba(0, 0, 0, 0.29);
+}
+
+.start-sesion {
+  text-align: center;
+  margin-top: 20px;
+}

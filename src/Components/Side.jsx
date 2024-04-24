@@ -16,7 +16,7 @@ function Side(props) {
   }, []);
   useEffect(() => {
     if (user) {
-        setRol([2,3].includes(user.role.id) ?
+        setRol([2,3].includes(user.rol.id) ?
          true: false)
     }
   }, [user]);

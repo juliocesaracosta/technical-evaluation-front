@@ -11,14 +11,12 @@ function Login() {
     const login = async () => {
         const email = getValues("email");
         const password = getValues("password");
+        console.log(getValues())
         if (!email || !password) {
             alert("Email y Password son requeridos.");
         } else {
             try {
-                const response = await axios.post('http://localhost:3800/api/login', {
-                    "email":email,
-                    "password":password,
-                });
+                const response = await axios.post('http://localhost:3800/api/login', getValues());
                 
                 sessionStorage.setItem('token', response.data.token);
                 sessionStorage.setItem('user', JSON.stringify(response.data.user));
@@ -34,8 +32,8 @@ function Login() {
         <div>
             <div class="h-56 grid grid-cols-3 gap-4 content-normal ...">
                 <div></div>
-                <div>
-                    <form className="flex max-w-md flex-col gap-4">
+                <div className="register">
+                    <form>
                         <div>
                             <div className="mb-2 block">
                             <Label htmlFor="email1" value="Email" />
@@ -48,9 +46,15 @@ function Login() {
                             </div>
                             <TextInput id="password1" type="password" {...register("password")} required />
                         </div>
-                        
-                        <Button type="button" onClick={login}>Entrar</Button>
                     </form>
+                    <div className="w-full start-sesion">
+                        <Button className="w-full" type="button" onClick={login}>Entrar</Button>
+                    </div>
+                    <div className="w-full start-sesion">
+                        <div>
+                            <a href="/register">Registrarse</a>
+                        </div>
+                    </div>
                 </div>
                 <div></div>
             </div>
