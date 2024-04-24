@@ -22,7 +22,7 @@ function Themes(props) {
         } catch (error) {
             setError(error);
         }
-        };
+    };
 
         fetchData();
     }, []);

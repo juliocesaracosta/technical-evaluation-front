@@ -5,15 +5,20 @@ import { Avatar, Dropdown, Navbar } from "flowbite-react";
 
 function Nav() {
   const [haveRol, setRol] = useState(null);
+  const [user, setUser] = useState(null);
+
   useEffect(() => {
-    const user = localStorage.getItem('user')
-    if (user) {
-      setRol(user.role.id in [2,3] ?
-        true: false)
-    } else {
-      setRol(false)
+    const tpmuser = sessionStorage.getItem('user');
+    if (tpmuser) {
+      setUser(JSON.parse(tpmuser));
     }
   }, []);
+  useEffect(() => {
+    if (user) {
+        setRol([2,3].includes(user.role.id) ?
+         true: false)
+    }
+  }, [user]);
   return (
     <Navbar fluid className='nav-important'>
       <Navbar.Brand href="https://flowbite-react.com">
@@ -21,6 +26,11 @@ function Nav() {
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Content</span>
       </Navbar.Brand>
       <div className="flex md:order-2">
+        {user ? '' :
+        <Navbar.Collapse>
+          <Navbar.Link href=""><Link to="/login">Ingresar</Link></Navbar.Link>
+
+        </Navbar.Collapse>}
         <Dropdown
           arrowIcon={false}
           inline
@@ -37,13 +47,13 @@ function Nav() {
           <Dropdown.Item>Earnings</Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item>Sign out</Dropdown.Item>
-        </Dropdown>
+          </Dropdown>
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
         <Navbar.Link href=""><Link to="/">Home</Link></Navbar.Link>
         <Navbar.Link href="#"><Link to="/profile">Profile</Link></Navbar.Link>
-        {!haveRol ? <Navbar.Link href="#"><Link to="/administration">Administration</Link></Navbar.Link> : ''}
+        {haveRol ? <Navbar.Link href="#"><Link to="/administration">Administration</Link></Navbar.Link> : ''}
       </Navbar.Collapse>
     </Navbar>
   );

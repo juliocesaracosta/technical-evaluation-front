@@ -5,6 +5,7 @@ import Profile from './Profile';
 import Administration from "./pages/Administration/Administration";
 import Themes from './pages/Themes/Themes';
 import ProtectedRoute from './Utils/ProtectedRoute';
+import Login from './pages/Login/Login';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
                 <Route exact path="/administration/themes" element={<Themes/>}></Route>
             </Routes>
           </ProtectedRoute>
+          <Routes>
+                <Route exact path="/login" element={<Login/>}></Route>
+          </Routes>
         </div>
       </div>
     </>
