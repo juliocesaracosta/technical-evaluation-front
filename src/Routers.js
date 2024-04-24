@@ -8,20 +8,26 @@ import Login from "./pages/Login/Login";
 import {
     createBrowserRouter
 } from "react-router-dom";
+import Layout from "./Layout";
+import Home from "./Home";
 
 const router = createBrowserRouter([
     { 
       path: "/",
-      element: <App/>,
+      element: <Layout/>,
       errorElement: <ErrorPage />,
       children:[
-        { path: "/profile", element: <Profile/> },
+        { 
+          path: "/",
+          element: <Home/>
+        },
+        { 
+          path: "/administration/themes",
+          element: <Themes/>
+        },
         { 
           path: "/administration",
-          element: <Administration/>,
-          children: [
-            {path: "/administration/themes", element: <Themes/>}
-          ]
+          element: <Administration/>
         },
       ]
     },

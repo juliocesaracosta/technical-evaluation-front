@@ -7,12 +7,7 @@ import { Routes, Route } from 'react-router-dom';
 
 function Administration(props) {
   return (
-    <div className='lg:flex'>
-      <div className=''>
-      <Side></Side>
-      </div>
-      <div className="overflow-x-auto w-full pt-5">
-      </div>
+    <div>
     </div>
   );
 }

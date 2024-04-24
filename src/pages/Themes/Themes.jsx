@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Table } from "flowbite-react";
-import Side from '../../Components/Side';
+import { Button } from "flowbite-react";
+import {  HiOutlinePencilAlt, HiOutlineTrash, HiOutlinePlus } from "react-icons/hi";
 
 
-function Themes(props) {
+function Themes() {
 
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
+    const [adminRol, setRol] = useState(null);
+    const [user, setUser] = useState(null);
     //const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
@@ -17,7 +20,6 @@ function Themes(props) {
             throw new Error('Failed to fetch data');
             }
             const result = await response.json();
-            console.log(result.themes)
             setData(result);
         } catch (error) {
             setError(error);
@@ -27,8 +29,21 @@ function Themes(props) {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        const tpmuser = sessionStorage.getItem('user');
+        if (tpmuser) {
+          setUser(JSON.parse(tpmuser));
+        }
+      }, []);
+
+      useEffect(() => {
+        if (user) {
+            setRol([3].includes(user.role.id) ?
+             true: false)
+        }
+      }, [user]);
+
     if (error) {
-        console.log(error)
         return <div>Error: {error.message}</div>;
     }
 
@@ -39,32 +54,41 @@ function Themes(props) {
     return (
         <div className='lg:flex'>
             <div className=''>
-                <Side></Side>
             </div>
-            <div className="overflow-x-auto w-full pt-5">
+            <div className="overflow-x-auto w-full p-2">
+                <div className="flex flex-wrap gap-2">
+                    <Button>
+                        Agregar tematica
+                        <HiOutlinePlus   className="mr-2 h-5 w-5" />
+                    </Button>
+                </div>
                 <Table>
                     <Table.Head>
                         <Table.HeadCell>Identificador</Table.HeadCell>
                         <Table.HeadCell>Descripción</Table.HeadCell>
-                        <Table.HeadCell>Category</Table.HeadCell>
-                        <Table.HeadCell>Price</Table.HeadCell>
                         <Table.HeadCell>
-                        <span className="sr-only">Edit</span>
+                            Acciones
                         </Table.HeadCell>
                     </Table.Head>
                     <Table.Body className="divide-y">
                         {data.themes.map((theme, i) => (
                         <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                            {theme._id}
+                                {theme._id}
                             </Table.Cell>
                             <Table.Cell>{theme.description}</Table.Cell>
-                            <Table.Cell>Laptop</Table.Cell>
-                            <Table.Cell>$2999</Table.Cell>
                             <Table.Cell>
-                            <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-                                Edit
-                            </a>
+                                <div className="flex flex-wrap gap-2">
+                                    <Button>
+                                        <HiOutlinePencilAlt  className="mr-2 h-5 w-5" />
+                                    </Button>
+                                    {
+                                        adminRol ? 
+                                        <Button>
+                                            <HiOutlineTrash  className="ml-2 h-5 w-5" />
+                                        </Button> : ''
+                                    }
+                                </div>
                             </Table.Cell>
                         </Table.Row>
                         ))}

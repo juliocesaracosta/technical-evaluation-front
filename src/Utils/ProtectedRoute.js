@@ -7,10 +7,13 @@ const ProtectedRoute = ({children}) => {
     let location = useLocation();
 
     if(!user.state.isAuthenticated) {
-        console.log(user)
-        //return <Navigate to="/login" state={{ from: location}} replace />
+        
     }
- return children
+    if ((!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) && location.pathname !== '/') {
+        return <Navigate to="/login"  replace />
+    }
+
+    return children
 
 };
 
