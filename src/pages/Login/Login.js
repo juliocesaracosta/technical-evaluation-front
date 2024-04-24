@@ -7,6 +7,8 @@ import {useNavigate } from "react-router-dom";
 function Login() {
     const { register, getValues } = useForm();
     const navigate = useNavigate();
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
 
     const login = async () => {
         const email = getValues("email");
@@ -30,7 +32,7 @@ function Login() {
 
     return (
         <div>
-            <div class="h-56 grid grid-cols-3 gap-4 content-normal ...">
+            <div className="h-56 grid grid-cols-3 gap-4 content-normal">
                 <div></div>
                 <div className="register">
                     <form>
@@ -53,6 +55,9 @@ function Login() {
                     <div className="w-full start-sesion">
                         <div>
                             <a href="/register">Registrarse</a>
+                        </div>
+                        <div>
+                            <a href="/">Ir a inicio</a>
                         </div>
                     </div>
                 </div>

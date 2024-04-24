@@ -69,7 +69,6 @@ function Themes() {
                         <Table.HeadCell>Descripción</Table.HeadCell>
                         <Table.HeadCell>
                             Acciones
-                            Acciones
                         </Table.HeadCell>
                     </Table.Head>
                     <Table.Body className="divide-y">

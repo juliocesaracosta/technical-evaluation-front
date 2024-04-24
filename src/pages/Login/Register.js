@@ -30,9 +30,9 @@ function Register(props) {
 
     return (
         <div>
-            <div class="h-56 grid grid-cols-3 gap-4 content-normal ...">
+            <div className="h-56 grid grid-cols-3 gap-4 content-normal">
                 <div></div>
-                <div class="register">
+                <div className="register">
                     <form>
                         <div>
                             <div className="mb-2 block">
@@ -74,7 +74,6 @@ function Register(props) {
                             <a href="/">Ir a inicio</a>
                         </div>
                     </div>
-                    
                 </div>
                 <div></div>
             </div>
